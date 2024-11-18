@@ -7,11 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface HolidayModalProps {
   holidayId: string;
-  rect: DOMRect | null;
   onClose: () => void;
 }
 
-export default function HolidayModal({ holidayId, rect, onClose }: HolidayModalProps) {
+export default function HolidayModal({ holidayId, onClose }: HolidayModalProps) {
   const { loading, error, data } = useQuery(GET_HOLIDAY_BY_ID, {
     variables: { id: holidayId },
   });

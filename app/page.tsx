@@ -101,7 +101,6 @@ export default function HomePage() {
         {selectedHoliday && clickedElementRect && (
           <HolidayModal
             holidayId={selectedHoliday}
-            rect={clickedElementRect}
             onClose={() => setSelectedHoliday(null)}
           />
         )}
