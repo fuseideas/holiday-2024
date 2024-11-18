@@ -5,11 +5,19 @@ import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_HOLIDAYS } from "@/app/queries/holiday";
 import HolidayModal from "@/app/components/HolidayModal";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import DayOne from "@/app/components/DayOne";
 import DayTwo from "@/app/components/DayTwo";
 import DayThree from "@/app/components/DayThree";
+
+
+type Holiday = {
+  id: string;
+  name: string;
+  date: string;
+};
+
 
 export default function HomePage() {
   const [selectedHoliday, setSelectedHoliday] = useState<string | null>(null);
@@ -59,7 +67,7 @@ export default function HomePage() {
             }}
           >
             <div className="min-h-[250px] flex justify-center items-center">
-              {holidays.slice(0, 2).map((holiday: any, index: number) => (
+              {holidays.slice(0, 2).map((holiday: Holiday, index: number) => (
                 <div key={holiday.id}>
                   <button
                     onClick={(event) => handleClick(holiday.id, event)}
@@ -74,7 +82,7 @@ export default function HomePage() {
 
           {/* Building Section */}
           <div className="grid w-full gap-4 bg-[url('/brick-wall.svg')] bg-cover bg-center grid-cols-6 md:grid-cols-4 sm:grid-cols-2">
-            {holidays.slice(2).map((holiday: any, index: number) => (
+            {holidays.slice(2).map((holiday: Holiday, index: number) => (
               <div key={holiday.id} className="w-full p-4 rounded-lg">
                 <button
                   onClick={(event) => handleClick(holiday.id, event)}
