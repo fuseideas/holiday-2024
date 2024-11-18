@@ -1,5 +1,4 @@
 // components/DayOne.tsx
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function DayOne() {

@@ -1,7 +1,6 @@
 // components/HolidayModal.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_HOLIDAY_BY_ID } from "@/app/queries/holiday";
 import { motion, AnimatePresence } from "framer-motion";
