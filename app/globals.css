@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #243949;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
@@ -24,4 +24,126 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+
+#one{
+  .st0 { fill: #eb9423; } 
+  .st1 { fill: #181012; } 
+  .st2 { fill: #f59bac; } 
+  .st3 { fill: #f9a62c; } 
+  .st4 { fill: #edd542; } 
+  .st5 { fill: #fff; } 
+  .st6 { fill: #d7d7d7; } 
+  .st7 { fill: #1f92ad; } 
+  .st8 { fill: #232a2d; } 
+  .st9 { fill: #d9cfcf; }
+}
+#two{
+  .st0 { fill: #c42126; } 
+  .st1 { fill: #d32d27; } 
+  .st2 { fill: #571e0d; } 
+  .st3 { fill: #eaeaea; } 
+  .st4 { fill: #bf744c; } 
+  .st5 { fill: #ab5f34; } 
+  .st6 { fill: #ba6f43; } 
+  .st7 { fill: #15783d; } 
+  .st8 { fill: #066634; } 
+  .st9 { fill: #fff; }
+  .st10 { fill: #d7d7d7; }
+  .st11 { fill: #00a69f; }
+  .st12 { fill: #e84225; }
+  .st13 { fill: #f7b0c2; }
+  .st14 { fill: #31120d; }
+  .st15 { fill: #b42025; }
+}
+#three{
+  .st0 {
+    fill: #181012;
+  }
+
+  .st1 {
+    fill: #603923;
+  }
+
+  .st2 {
+    fill: #dd362e;
+  }
+
+  .st3 {
+    fill: #f59bac;
+  }
+
+  .st4 {
+    fill: #b92025;
+  }
+
+  .st5 {
+    fill: #edd542;
+  }
+
+  .st6 {
+    fill: #f6d7a8;
+  }
+
+  .st7 {
+    fill: #fff;
+  }
+
+  .st8 {
+    fill: #31120d;
+  }
+
+  .st9 {
+    fill: #cc884a;
+  }
+
+  .st10 {
+    fill: #fbe0c8;
+  }
+
+  .st11 {
+    fill: #6b4227;
+  }
+}
+
+
+/* styles/globals.css */
+.modal-content {
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
 }

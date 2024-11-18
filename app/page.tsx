@@ -1,101 +1,103 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_HOLIDAYS } from "@/app/queries/holiday";
+import HolidayModal from "@/app/components/HolidayModal";
+import { motion, AnimatePresence } from "framer-motion";
+
+import DayOne from "@/app/components/DayOne";
+import DayTwo from "@/app/components/DayTwo";
+import DayThree from "@/app/components/DayThree";
+
+export default function HomePage() {
+  const [selectedHoliday, setSelectedHoliday] = useState<string | null>(null);
+  const [clickedElementRect, setClickedElementRect] = useState<DOMRect | null>(null);
+  const { loading, error, data } = useQuery(GET_ALL_HOLIDAYS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading holidays.</p>;
+
+  const holidays = data.holidays.nodes;
+
+  const renderHolidayAnimation = (index: number) => {
+    switch (index) {
+      case 0:
+        return <DayOne />;
+      case 1:
+        return <DayTwo />;
+      case 2:
+        return <DayThree />;
+      default:
+        return null;
+    }
+  };
+
+  const handleClick = (holidayId: string, event: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setClickedElementRect(rect);
+    setSelectedHoliday(holidayId);
+  };
+  
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="flex flex-col min-h-screen justify-end">
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-1/3 p-4"></div>
+        <div className="w-full md:w-2/3 pl-4 pr-4">
+          {/* Snow Cap Section */}
+          <div className="w-full h-[100px] mx-auto bg-[url('/snow-cap.svg')] bg-[length:100%_100%] bg-no-repeat bg-bottom"></div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Roof Section */}
+          <div
+            className="w-full mx-auto bg-no-repeat"
+            style={{
+              backgroundImage: "url('/red-roof.svg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="min-h-[250px] flex justify-center items-center">
+              {holidays.slice(0, 2).map((holiday: any, index: number) => (
+                <div key={holiday.id}>
+                  <button
+                    onClick={(event) => handleClick(holiday.id, event)}
+                    aria-label={`Holiday ${index + 1}`}
+                  >
+                    {renderHolidayAnimation(index)}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Building Section */}
+          <div className="grid w-full gap-4 bg-[url('/brick-wall.svg')] bg-cover bg-center grid-cols-6 md:grid-cols-4 sm:grid-cols-2">
+            {holidays.slice(2).map((holiday: any, index: number) => (
+              <div key={holiday.id} className="w-full p-4 rounded-lg">
+                <button
+                  onClick={(event) => handleClick(holiday.id, event)}
+                  aria-label={`Holiday ${index + 1}`}
+                >
+                  {renderHolidayAnimation(index + 2)}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      {/* Modal Section */}
+      <AnimatePresence>
+        {selectedHoliday && clickedElementRect && (
+          <HolidayModal
+            holidayId={selectedHoliday}
+            rect={clickedElementRect}
+            onClose={() => setSelectedHoliday(null)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
