@@ -36,7 +36,7 @@ export default function HolidayModal({ holidayId, onClose }: HolidayModalProps) 
   if (loading) return null;
   if (error) return <p>Error loading holiday details.</p>;
 
-  const { title, content, holidayAcf } = data.holiday;
+  const { title, holidayAcf } = data.holiday;
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
