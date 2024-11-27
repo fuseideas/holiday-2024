@@ -5,12 +5,15 @@ import { gql } from "@apollo/client";
 
 export const GET_ALL_HOLIDAYS = gql`
   query GetAllHolidays {
-    holidays(where: { orderby: { field: DATE, order: ASC } }) {
+    holidays(first: 100, where:{ orderby: { field: DATE, order: ASC } }) {
       nodes {
         id
         title
         slug
         date
+        holidayAcf{
+          enabled
+        }
       }
     }
   }

@@ -1,10 +1,10 @@
 // components/DayOne.tsx
 import { motion } from "framer-motion";
 
-export default function DayThree() {
+export default function DayThree({ enabled }: {enabled: boolean}) {
     return (
         <>
-      <div id="three" className="day-animation w-full h-full block">
+      <div id="three" className={`day-animation w-full h-full block ${enabled ? 'opacity-100' : 'opacity-50'}`}>
     
         <motion.svg
       id="Layer_1"
@@ -28,7 +28,7 @@ export default function DayThree() {
 
       <motion.g
         id="character"
-        animate={{ x: [0, 30, 0] }}
+        animate={enabled ? { x: [0, 30, 0] } : {}}
         transition={{ repeat: Infinity, repeatType: "mirror", duration: 4 }}
       >
    

@@ -1,7 +1,7 @@
 // components/DayOne.tsx
 import { motion } from "framer-motion";
 
-export default function DayOne() {
+export default function DayOne({ enabled }: {enabled: boolean}) {
     return (
         <>
       <div id="one" className="day-animation w-full h-full flex justify-center">
@@ -21,7 +21,7 @@ export default function DayOne() {
       </g>
       <motion.g
         id="character"
-        animate={{ x: [0, 30, 0] }}
+        animate={enabled ? { x: [0, 30, 0] } : {}}
         transition={{ repeat: Infinity, repeatType: "mirror", duration: 4 }}
       >
     
