@@ -1075,15 +1075,6 @@ p{
 }
 #twentyfour{
   .st0 {
-    fill: #f12026;
-  }
-
-  .st1 {
-    fill: #fff;
-  }
-}
-#twentyfive{
-  .st0 {
     fill: #0f0c0c;
   }
 
@@ -1104,7 +1095,7 @@ p{
   }
 
   .st5 {
-    fill: #c4e5c8;
+    fill: #243949;
   }
 
   .st6 {
@@ -1135,53 +1126,130 @@ p{
     fill: #e9e8de;
   }
 }
-#twentysix{
+#twentyfive{
   .st0 {
-    fill: #e7bfa6;
+    fill: none;
   }
 
   .st1 {
-    fill: #043a1a;
+    fill: #60bbea;
   }
 
   .st2 {
-    fill: #1c663d;
+    fill: #ed912f;
   }
 
   .st3 {
-    fill: #084922;
+    fill: #94cce6;
   }
 
   .st4 {
-    fill: #f12026;
+    fill: #f7dc5d;
   }
 
   .st5 {
-    fill: #fff;
+    fill: #e07b26;
   }
 
   .st6 {
-    fill: #d32816;
+    fill: #87674c;
   }
 
   .st7 {
-    fill: #ef4735;
+    fill: #c4e5c8;
   }
 
   .st8 {
-    fill: #f5e3bf;
+    fill: #fff;
   }
 
   .st9 {
-    fill: #edd443;
+    fill: #73563c;
   }
 
   .st10 {
-    fill: #e93e22;
+    fill: #f1b130;
   }
 
   .st11 {
-    fill: #cc1220;
+    fill: #1d63a7;
+  }
+
+  .st12 {
+    fill: #134b8d;
+  }
+
+  .st13 {
+    fill: #f4c04c;
+  }
+
+  .st14 {
+    fill: #2f7abe;
+  }
+
+  .st15 {
+    fill: #59aa46;
+  }
+
+  .st16 {
+    fill: #389cd7;
+  }
+
+  .st17 {
+    fill: #eb4324;
+  }
+
+  .st18 {
+    fill: #b0d9ed;
+  }
+
+  .st19 {
+    fill: #46b875;
+  }
+
+  .st20 {
+    fill: #338e44;
+  }
+}
+#twentysix{
+  .st0 {
+    fill: #f8b50a;
+  }
+
+  .st1 {
+    fill: #2b6320;
+  }
+
+  .st2, .st3 {
+    fill: #3e982e;
+  }
+
+  .st4, .st5 {
+    fill: #004729;
+  }
+
+  .st6 {
+    fill: #262626;
+  }
+
+  .st6, .st5, .st7, .st8, .st9, .st10, .st3 {
+    fill-rule: evenodd;
+  }
+
+  .st7 {
+    fill: #de290e;
+  }
+
+  .st9 {
+    fill: #333;
+  }
+
+  .st10, .st11 {
+    fill: #be1a25;
+  }
+
+  .st12 {
+    fill: #fcf170;
   }
 }
 #chimney{
