@@ -8,8 +8,8 @@ interface RootLayoutProps {
 }
 
 export const metadata = {
-  title: "My Next.js App",
-  description: "This is my Next.js app",
+  title: "Happy Holidays from Fuseideas",
+  description: "Explore our interactive calendar for holiday traditions from the Fuseideas team.",
   viewport: "width=device-width, initial-scale=1.0",
 };
 
