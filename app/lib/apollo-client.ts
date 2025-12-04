@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: process.env.WP_GRAPHQL_ENDPOINT || "https://fuseideas.com/graphql",
+    uri: process.env.WP_GRAPHQL_ENDPOINT || "https://fuseprod.wpenginepowered.com/graphql",
   }),
   cache: new InMemoryCache(),
 });
